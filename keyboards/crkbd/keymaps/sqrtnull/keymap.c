@@ -1,21 +1,3 @@
-/*
-Copyright 2019 @foostan
-Copyright 2020 Drashna Jaelre <@drashna>
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
 #include QMK_KEYBOARD_H
 
 const uint16_t PROGMEM com_sd[]    = {KC_S, KC_D, COMBO_END};
@@ -26,25 +8,19 @@ const uint16_t PROGMEM com_kl[]    = {KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM com_jk[]    = {KC_K, KC_J, COMBO_END};
 const uint16_t PROGMEM com_zxc[]   = {KC_Z, KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM com_cmdt[]  = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM com_cmdtm[] = {KC_M, KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM com_zeun[] = {KC_0, KC_UNDS, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(com_sd, MO(1)),           // numbers
-    COMBO(com_kl, KC_ENT),           // enter
-    COMBO(com_jk, KC_ESC),           // esc
-    COMBO(com_xc, KC_TAB),           // tab
-    COMBO(com_df, QK_LEAD),          // leader
-    COMBO(com_cmdt, KC_BSPC),        // backspace
-    COMBO(com_cmdtm, LALT(KC_BSPC)), // alt-backspace
-    COMBO(com_zxc, KC_CAPS),         // caps lock
-    COMBO(com_sdf, MO(4)),           // function
-    COMBO(com_zeun, KC_1),           // 1
+    COMBO(com_sd, MO(1)),     // numbers
+    COMBO(com_sdf, MO(4)),    // function
+    COMBO(com_kl, KC_ENT),    // enter
+    COMBO(com_jk, KC_ESC),    // esc
+    COMBO(com_xc, KC_TAB),    // tab
+    COMBO(com_df, QK_LEAD),   // leader
+    COMBO(com_cmdt, KC_BSPC), // backspace
+    COMBO(com_zxc, KC_CAPS),  // caps lock
 };
 
 #define NAV_SCN LT(3,KC_SCLN)
-#define OS_LSFT OSM(MOD_LSFT)
-#define OS_LCTL OSM(MOD_LCTL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_split_3x6_3(
@@ -55,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,  MO(2), OS_LSFT,    OS_LCTL,  KC_SPC, KC_LALT
+                                          KC_LGUI,   MO(2), KC_LSFT,    KC_LCTL,  KC_SPC, KC_LALT
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -74,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______,  KC_GRV,   KC_AT, KC_LPRN, KC_RPRN, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_QUOT, KC_SCLN, _______,
+      _______,  KC_GRV,   KC_AT, KC_LPRN, KC_RPRN, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR,    KC_1, KC_SCLN, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_EXLM, KC_HASH, KC_LCBR, KC_RCBR, KC_DQUO,                      KC_PIPE, KC_MINS,  KC_EQL, KC_PLUS, KC_COLN, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -86,11 +62,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, KC_ACL2, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U,                      _______, KC_PGUP, KC_HOME, _______, _______, _______,
+      _______,  KC_ESC, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U,                      _______, KC_PGUP, KC_HOME,  KC_ENT, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_ACL0, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D,                      KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,
+      _______,  KC_TAB, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D,                      KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_WH_L, KC_BTN4, KC_BTN3, KC_BTN5, KC_WH_R,                      _______, KC_PGDN,  KC_END, _______, _______, _______,
+      _______, KC_WH_L, KC_BTN4, KC_BTN3, KC_BTN5, KC_WH_R,                      _______, KC_PGDN,  KC_END, KC_BSPC, _______, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          _______, _______, _______,     _______, _______, _______
                                       //`--------------------------'  `--------------------------'
