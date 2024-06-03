@@ -21,6 +21,8 @@ combo_t key_combos[] = {
 };
 
 #define NAV_SCN LT(3,KC_SCLN)
+#define OS_LSFT OSM(MOD_LSFT)
+#define OS_LCTL OSM(MOD_LCTL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_split_3x6_3(
@@ -31,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   MO(2), KC_LSFT,    KC_LCTL,  KC_SPC, KC_LALT
+                                          KC_LGUI,   MO(2), OS_LSFT,    OS_LCTL,  KC_SPC, KC_LALT
                                       //`--------------------------'  `--------------------------'
 
   ),
