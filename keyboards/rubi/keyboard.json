@@ -24,6 +24,8 @@
     },
    "indicators": {
       "caps_lock": "C6"
+   "build": {
+      "lto": true
    },
    "matrix_pins": {
       "cols": ["B3", "B2", "B1", "F7"],
